@@ -1,10 +1,12 @@
 {
-  "name": "App-Dev",
   "image": "mcr.microsoft.com/devcontainers/go:1.23-bookworm",
-  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "customizations": {
     "vscode": {
-      "extensions": ["esbenp.prettier-vscode"]
+      "extensions": [
+        "eamodio.gitlens",
+        "esbenp.prettier-vscode",
+        "golang.go"
+      ]
     }
   },
   "postCreateCommand": "",
