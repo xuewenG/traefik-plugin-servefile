@@ -66,5 +66,6 @@ func (b *servefile) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 		}
 	}
 
+	rw.Header().Del("Content-Type")
 	http.ServeFile(rw, req, filePath)
 }
