@@ -86,6 +86,11 @@ func New(ctx context.Context, next http.Handler, config *Config, name string) (h
 func (b *servefile) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 	rw.Header().Del("Content-Type")
 
+	if req.Method != http.MethodGet && req.Method != http.MethodHead {
+		rw.WriteHeader(http.StatusMethodNotAllowed)
+		return
+	}
+
 	reqPath := req.URL.Path
 	if strings.Contains(reqPath, "..") {
 		rw.WriteHeader(http.StatusForbidden)
