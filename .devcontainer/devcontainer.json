@@ -1,18 +1,24 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/go:1.23-bookworm",
+  "dockerComposeFile": "docker-compose.yaml",
+  "service": "main",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "customizations": {
     "vscode": {
       "extensions": [
+        "Anthropic.claude-code",
         "eamodio.gitlens",
         "esbenp.prettier-vscode",
         "golang.go"
       ]
     }
   },
-  "postCreateCommand": "",
+  "postCreateCommand": "npm install -g @anthropic-ai/claude-code",
   "remoteUser": "root",
+  "containerEnv": {
+    "TZ": "Asia/Shanghai"
+  },
   "mounts": [
     "source=/root/.ssh,target=/root/.ssh,type=bind,consistency=cached",
-    "source=/etc/localtime,target=/etc/localtime,type=bind,consistency=cached"
+    "source=/${localWorkspaceFolder},target=/workspaces/${localWorkspaceFolderBasename},type=bind,consistency=cached"
   ]
 }
