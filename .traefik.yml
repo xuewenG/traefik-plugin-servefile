@@ -1,0 +1,10 @@
+displayName: Serve File
+type: middleware
+iconPath: .assets/icon.png
+
+import: github.com/xuewenG/traefik-plugin-servefile
+
+summary: 'Serve File'
+
+testData:
+  rootDir: /var/www
